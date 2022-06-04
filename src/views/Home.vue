@@ -159,7 +159,8 @@
           </div>
           <div class="email">
             <div><label for="">Your email</label></div>
-            <input placeholder="For exemple duko@contact.com" type="email" />
+            <input placeholder="For exemple duko@contact.com" type="email" />git
+            branch -M main
           </div>
           <div class="message">
             <div><label for="">Your message</label></div>
