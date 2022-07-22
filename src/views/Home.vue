@@ -1,7 +1,7 @@
 <template>
-  <div class="homeWrapper">
+  <div class="homeWrapper md:mb-8 md:pt-8">
     <div
-      class="header bg-green-600 max-w-7xl mx-auto sm:px-6 md:mt-8 lg:px-8 pt-8 pb-12 md:rounded-2xl"
+      class="header bg-green-600 max-w-7xl mx-auto sm:px-6 lg:px-8 pt-8 pb-12 md:rounded-2xl"
     >
       <!-- <div class="logoWrap">
         <img class="dukoLogo" src="../assets/logoDuko.png" alt="" />
@@ -175,7 +175,7 @@
     </div>
 
     <div
-      class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8 bg-primary-green p-8"
+      class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8 bg-primary-green p-8 md:rounded-xl"
     >
       <div class="titleAboutUS text-primary-green flex justify-center">
         <div
