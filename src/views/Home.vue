@@ -67,7 +67,7 @@
       <div class="buttonSide w-full flex justify-center pt-20">
         <div class="w-full flex flex-col md:flex-row md:w-1/2">
           <input
-            v-model="this.email"
+            v-model="email"
             class="md:w-3/4 p-1 px-4 text-gray-800 text-center"
             placeholder="Your Email"
             type="text"
@@ -252,6 +252,7 @@ export default {
   components: {
     // HelloWorld,
   },
+
   data: () => ({
     displayDays: 0,
     displayHours: 0,
