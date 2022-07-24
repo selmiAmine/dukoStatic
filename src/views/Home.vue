@@ -60,7 +60,7 @@
           We are working hard to launch our new website
         </div>
         <div class="text-md md:text-xl">
-          Please register to be notified when it’s ready!
+          Please register to be notified when it’s ready! NOW
         </div>
       </div>
 
