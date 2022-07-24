@@ -56,7 +56,7 @@
       <div
         class="mainText w-full md:flex md:flex-col md:items-center md:justify-center pt-8"
       >
-        <div class="text-2xl md:text-4xl">
+        <div class="text-2xl md:text-4xl font-semibold md:mb-2">
           We are working hard to launch our new website
         </div>
         <div class="text-md md:text-xl">
@@ -91,7 +91,7 @@
       </div>
       <div class="pictureList w-full flex flex-col items-center justify-center">
         <div
-          class="picturewrapper bg-green-200 w-full pt-8 flex justify-center md:justify-start"
+          class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-start"
         >
           <div class="wrapperCon flex flex-col items-center justify-center">
             <div class="picture mb-4">
@@ -103,26 +103,71 @@
           </div>
         </div>
         <div
-          class="picturewrapper bg-green-200 w-full pt-8 flex justify-center md:justify-end"
+          class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-end"
         >
           <div class="wrapperCon flex flex-col items-center justify-center">
             <div class="picture mb-4">
-              <img class="h-44 w-44" src="../assets/pic1.png" alt="" />
+              <img class="h-44 w-44" src="../assets/pic2.png" alt="" />
             </div>
             <div class="text-center text-primary-orange font-medium">
-              Check out our partners and <br />blogs on green living
+              Subscribe for tips and <br />special offers
             </div>
           </div>
         </div>
         <div
-          class="picturewrapper bg-green-200 w-full pt-8 flex justify-center md:justify-start"
+          class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-start"
         >
           <div class="wrapperCon flex flex-col items-center justify-center">
             <div class="picture mb-4">
-              <img class="h-44 w-44" src="../assets/pic1.png" alt="" />
+              <img class="h-44 w-44" src="../assets/pic3.png" alt="" />
             </div>
             <div class="text-center text-primary-orange font-medium">
-              Check out our partners and <br />blogs on green living
+              Make a difference with <br />
+              every euro you spend
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="theTeam">
+      <div class="">
+        <div class="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+          <div class="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
+            <div class="space-y-5 sm:space-y-4">
+              <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Meet our leadership
+              </h2>
+              <p class="text-xl text-gray-500">
+                Libero fames augue nisl porttitor nisi, quis. Id ac elit odio
+                vitae elementum enim vitae ullamcorper suspendisse. Vivamus
+                fringilla.
+              </p>
+            </div>
+            <div class="lg:col-span-2">
+              <ul
+                role="list"
+                class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8"
+              >
+                <div class="memberPresentation col-span-2 bg-green-200">
+                  <div class="imgContainer w-1/2">
+                    <img src="../assets/keiko.png" alt="" />
+                  </div>
+                </div>
+                <li v-for="person in people" :key="person.name">
+                  <div class="flex items-center space-x-4 lg:space-x-6">
+                    <img
+                      class="w-16 h-16 rounded-full lg:w-20 lg:h-20"
+                      :src="person.imageUrl"
+                      alt
+                    />
+                    <div class="font-medium text-lg leading-6 space-y-1">
+                      <h3>{{ person.name }}</h3>
+                      <p class="text-indigo-600">{{ person.role }}</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -310,6 +355,55 @@ export default {
 
 
 <script setup>
+const people = [
+  {
+    name: "Keiko",
+    role: "President - Board member",
+    imageUrl: "../assets/4.png",
+  },
+  {
+    name: "Leike",
+    role: "Board member",
+    imageUrl:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+  {
+    name: "Anna",
+    role: "Product manager",
+    imageUrl:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+  {
+    name: "Gracia",
+    role: "Social Media",
+    imageUrl:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+  {
+    name: "Tarek",
+    role: "Mobile Engineer",
+    imageUrl:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+  {
+    name: "Amine",
+    role: "Web Developer",
+    imageUrl:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+  {
+    name: "Paula",
+    role: "UX Designer",
+    imageUrl:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+  {
+    name: "Michela",
+    role: "Graphic Designer",
+    imageUrl:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+];
 // import { ref } from "@vue/reactivity";
 
 // const days = ref(0);
