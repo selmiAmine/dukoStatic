@@ -67,11 +67,14 @@
       <div class="buttonSide w-full flex justify-center pt-20">
         <div class="w-full flex flex-col md:flex-row md:w-1/2">
           <input
+            v-model="this.email"
             class="md:w-3/4 p-1 px-4 text-gray-800 text-center"
             placeholder="Your Email"
             type="text"
           />
-          <button class="md:w-1/4 p-1 bg-primary-pink">Let me Know</button>
+          <button @click="storeEmail" class="md:w-1/4 p-1 bg-primary-pink">
+            Let me Know
+          </button>
         </div>
       </div>
       <div class="w-full flex justify-center pt-12">
@@ -88,33 +91,39 @@
       </div>
       <div class="pictureList w-full flex flex-col items-center justify-center">
         <div
-          class="picturewrapper pt-8 flex flex-col items-center justify-center"
+          class="picturewrapper bg-green-200 w-full pt-8 flex justify-center md:justify-start"
         >
-          <div class="picture mb-4">
-            <img class="h-44 w-44" src="../assets/pic1.png" alt="" />
-          </div>
-          <div class="text-center text-primary-orange font-medium">
-            Check out our partners and <br />blogs on green living
+          <div class="wrapperCon flex flex-col items-center justify-center">
+            <div class="picture mb-4">
+              <img class="h-44 w-44" src="../assets/pic1.png" alt="" />
+            </div>
+            <div class="text-center text-primary-orange font-medium">
+              Check out our partners and <br />blogs on green living
+            </div>
           </div>
         </div>
         <div
-          class="picturewrapper pt-8 flex flex-col items-center justify-center"
+          class="picturewrapper bg-green-200 w-full pt-8 flex justify-center md:justify-end"
         >
-          <div class="picture mb-4">
-            <img class="h-44 w-44" src="../assets/pic2.png" alt="" />
-          </div>
-          <div class="text-center text-primary-orange font-medium">
-            Check out our partners and <br />blogs on green living
+          <div class="wrapperCon flex flex-col items-center justify-center">
+            <div class="picture mb-4">
+              <img class="h-44 w-44" src="../assets/pic1.png" alt="" />
+            </div>
+            <div class="text-center text-primary-orange font-medium">
+              Check out our partners and <br />blogs on green living
+            </div>
           </div>
         </div>
         <div
-          class="picturewrapper pt-8 flex flex-col items-center justify-center"
+          class="picturewrapper bg-green-200 w-full pt-8 flex justify-center md:justify-start"
         >
-          <div class="picture mb-4">
-            <img class="h-44 w-44" src="../assets/pic3.png" alt="" />
-          </div>
-          <div class="text-center text-primary-orange font-medium">
-            Check out our partners and <br />blogs on green living
+          <div class="wrapperCon flex flex-col items-center justify-center">
+            <div class="picture mb-4">
+              <img class="h-44 w-44" src="../assets/pic1.png" alt="" />
+            </div>
+            <div class="text-center text-primary-orange font-medium">
+              Check out our partners and <br />blogs on green living
+            </div>
           </div>
         </div>
       </div>
@@ -235,6 +244,9 @@
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue";
 
+import { db } from "@/firebase";
+import { collection, addDoc } from "firebase/firestore";
+
 export default {
   name: "Home",
   components: {
@@ -245,6 +257,7 @@ export default {
     displayHours: 0,
     displayMinutes: 0,
     displaySeconds: 0,
+    email: "",
   }),
   computed: {
     _seconds: () => 1000,
@@ -262,6 +275,12 @@ export default {
     this.showRemaining();
   },
   methods: {
+    async storeEmail() {
+      const docRef = await addDoc(collection(db, "emails"), {
+        email: this.email,
+      });
+      console.log(docRef.id);
+    },
     showRemaining() {
       const timer = setInterval(() => {
         const now = new Date();
