@@ -1,7 +1,7 @@
 <template>
-  <div class="homeWrapper">
+  <div class="homeWrapper md:mb-8 md:pt-8">
     <div
-      class="header bg-green-600 max-w-7xl mx-auto sm:px-6 md:mt-8 lg:px-8 pt-8 pb-12 md:rounded-2xl"
+      class="header bg-green-600 max-w-7xl mx-auto sm:px-6 lg:px-8 pt-8 pb-12 md:rounded-2xl"
     >
       <!-- <div class="logoWrap">
         <img class="dukoLogo" src="../assets/logoDuko.png" alt="" />
@@ -56,22 +56,25 @@
       <div
         class="mainText w-full md:flex md:flex-col md:items-center md:justify-center pt-8"
       >
-        <div class="text-2xl md:text-4xl">
+        <div class="text-2xl md:text-4xl font-semibold md:mb-2">
           We are working hard to launch our new website
         </div>
         <div class="text-md md:text-xl">
-          Please register to be notified when it’s ready!
+          Please register to be notified when it’s ready! NOW
         </div>
       </div>
 
       <div class="buttonSide w-full flex justify-center pt-20">
         <div class="w-full flex flex-col md:flex-row md:w-1/2">
           <input
+            v-model="email"
             class="md:w-3/4 p-1 px-4 text-gray-800 text-center"
             placeholder="Your Email"
             type="text"
           />
-          <button class="md:w-1/4 p-1 bg-primary-pink">Let me Know</button>
+          <button @click="storeEmail" class="md:w-1/4 p-1 bg-primary-pink">
+            Let me Know
+          </button>
         </div>
       </div>
       <div class="w-full flex justify-center pt-12">
@@ -81,40 +84,99 @@
 
     <div class="process max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8">
       <div class="textTitle w-full flex justify-center">
-        <div class="text-primary-green text-2xl md:text-4xl font-medium">
+        <div
+          class="text-primary-green text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left"
+        >
           Shop smarter and more <br />
           sustainable with Duko!
         </div>
       </div>
       <div class="pictureList w-full flex flex-col items-center justify-center">
         <div
-          class="picturewrapper pt-8 flex flex-col items-center justify-center"
+          class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-start"
         >
-          <div class="picture mb-4">
-            <img class="h-44 w-44" src="../assets/pic1.png" alt="" />
-          </div>
-          <div class="text-center text-primary-orange font-medium">
-            Check out our partners and <br />blogs on green living
+          <div class="wrapperCon flex flex-col items-center justify-center">
+            <div class="picture mb-4">
+              <img class="h-44 w-44" src="../assets/pic1.png" alt="" />
+            </div>
+            <div class="text-center text-primary-orange font-medium">
+              Check out our partners and <br />blogs on green living
+            </div>
           </div>
         </div>
         <div
-          class="picturewrapper pt-8 flex flex-col items-center justify-center"
+          class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-end"
         >
-          <div class="picture mb-4">
-            <img class="h-44 w-44" src="../assets/pic2.png" alt="" />
-          </div>
-          <div class="text-center text-primary-orange font-medium">
-            Check out our partners and <br />blogs on green living
+          <div class="wrapperCon flex flex-col items-center justify-center">
+            <div class="picture mb-4">
+              <img class="h-44 w-44" src="../assets/pic2.png" alt="" />
+            </div>
+            <div class="text-center text-primary-orange font-medium">
+              Subscribe for tips and <br />special offers
+            </div>
           </div>
         </div>
         <div
-          class="picturewrapper pt-8 flex flex-col items-center justify-center"
+          class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-start"
         >
-          <div class="picture mb-4">
-            <img class="h-44 w-44" src="../assets/pic3.png" alt="" />
+          <div class="wrapperCon flex flex-col items-center justify-center">
+            <div class="picture mb-4">
+              <img class="h-44 w-44" src="../assets/pic3.png" alt="" />
+            </div>
+            <div class="text-center text-primary-orange font-medium">
+              Make a difference with <br />
+              every euro you spend
+            </div>
           </div>
-          <div class="text-center text-primary-orange font-medium">
-            Check out our partners and <br />blogs on green living
+        </div>
+      </div>
+    </div>
+
+    <div class="theTeam">
+      <div class="">
+        <div class="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+          <div class="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
+            <div class="space-y-5 sm:space-y-4">
+              <h2
+                class="text-primary-green text-3xl font-extrabold tracking-tight sm:text-4xl"
+              >
+                The Crew behind Duko
+              </h2>
+              <p class="text-xl text-gray-500">
+                Libero fames augue nisl porttitor nisi, quis. Id ac elit odio
+                vitae elementum enim vitae ullamcorper suspendisse. Vivamus
+                fringilla.
+              </p>
+            </div>
+            <div class="lg:col-span-2">
+              <ul
+                role="list"
+                class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8"
+              >
+                <div class="memberPresentation col-span-2 bg-green-200">
+                  <div class="imgContainer w-1/2">
+                    <img src="../assets/keiko.png" alt="" />
+                  </div>
+                </div>
+                <li
+                  class="hover:bg-green-800 focus:bg-green-800 border-2 p-2 rounded-xl focus:text-white hover:text-white"
+                  v-for="person in people"
+                  :key="person.name"
+                >
+                  <div class="flex items-center space-x-4 lg:space-x-6">
+                    <img
+                      class="object-cover w-16 h-16 rounded-full lg:w-20 lg:h-20"
+                      :src="getImgUrl(person.imageUrl)"
+                      alt
+                    />
+                    <div class="font-medium text-lg leading-6 space-y-1">
+                      <h3>{{ person.name }}</h3>
+                      <p class="text-indigo-600">{{ person.role }}</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -122,7 +184,7 @@
 
     <div class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8">
       <div
-        class="titleAboutUS text-primary-green text-center text-2xl md:text-4xl font-medium md:text-left"
+        class="titleAboutUS text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left"
       >
         About us
       </div>
@@ -149,7 +211,7 @@
       <div class="misionAndVision md:flex px-2">
         <div class="missionSide">
           <div
-            class="titleMission text-primary-green text-2xl md:text-4xl font-medium mt-4 mb-2"
+            class="titleMission text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left mt-4 mb-2"
           >
             Mission
           </div>
@@ -161,7 +223,7 @@
         </div>
         <div class="visionSide">
           <div
-            class="titleVision text-primary-green text-2xl md:text-4xl font-medium mt-4 mb-2"
+            class="titleVision text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left mt-4 mb-2"
           >
             Vision
           </div>
@@ -175,7 +237,7 @@
     </div>
 
     <div
-      class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8 bg-primary-green p-8"
+      class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8 bg-primary-green p-8 md:rounded-xl"
     >
       <div class="titleAboutUS text-primary-green flex justify-center">
         <div
@@ -235,16 +297,21 @@
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue";
 
+import { db } from "@/firebase";
+import { collection, addDoc } from "firebase/firestore";
+
 export default {
   name: "Home",
   components: {
     // HelloWorld,
   },
+
   data: () => ({
     displayDays: 0,
     displayHours: 0,
     displayMinutes: 0,
     displaySeconds: 0,
+    email: "",
   }),
   computed: {
     _seconds: () => 1000,
@@ -262,6 +329,16 @@ export default {
     this.showRemaining();
   },
   methods: {
+    getImgUrl(pet) {
+      var images = require.context("../assets/TeamsPics/", false, /\.jpg$/);
+      return images("./" + pet + ".jpg");
+    },
+    async storeEmail() {
+      const docRef = await addDoc(collection(db, "emails"), {
+        email: this.email,
+      });
+      console.log(docRef.id);
+    },
     showRemaining() {
       const timer = setInterval(() => {
         const now = new Date();
@@ -290,6 +367,47 @@ export default {
 
 
 <script setup>
+const people = [
+  {
+    name: "Keiko",
+    role: "President - Board member",
+    imageUrl: "dukoteam2",
+    description:
+      "When I started at the forerunner of DuKo I wanted to contribute to a project that supported sustainability. My parents raised my sister and I with the notion that we people need everything around us to live and everything on this planet has its own value and contribution to this planets existance.As cofounder of DuKo I strongly believe we all have our responsibility to protect this place we live on, our planet. Now that I have children of my own, I want them and future generations to enjoy this beautiful place too. Things will change and so does our planet, but I don't want to destroy it and I think none of us purposely want to do this. And that is why I continue my work with DuKo.Sustainability, Climate Change and subjects around these matters are so big and we as individuals feel so small. But I too believe that all our individual actions combined have a great impact. With DuKo I hope to contribute to helping others develop their own path to a have a less negative footprint.",
+  },
+  {
+    name: "Leike",
+    role: "Board member",
+    imageUrl: "dukoteam6",
+    description:
+      "The main goal of my life is: to use my capabilities and knowledge to make a positive impact on this world. As a Visual Designer, I can be a mediator between the complexity of our world and the audience, to build up awareness and stimulate a change. Working for Duko is a way for me to reach my goal. What I found interesting, the very first time, is their way to front this big topic, which is sustainability, suggesting people just small steps. In my opinion, this is a good strategy to let them feel less stressed from the minor changes that they need to do.",
+  },
+  {
+    name: "Gracia",
+    role: "Social Media",
+    imageUrl: "dukoteam13",
+    description:
+      "The reason why I joined the DuKo team is because I would like to learn more about sustainability. As a student, I noticed that I often found it difficult to make sustainable choices, because they often seem very expensive (at first glance). Over the past few years, I've been delving more and more into it, but I think I still have a lot to learn. I've had several PR positions in different student committees in the past so I think DuKo is the perfect way to apply this knowledge for our content while learning more about sustainability from an awesome team!",
+  },
+  {
+    name: "Tarek",
+    role: "Mobile Engineer",
+    imageUrl: "dukoteam7",
+    description:
+      "Living on a clean and comfortable planet is a right, but also a duty for all of us. To achieve this goal, and as a mobile development engineer, I try to help the DuKo team to brainstorm and develop the technical parts of our solution that really help spread the culture of sustainability.",
+  },
+  {
+    name: "Michela",
+    role: "Graphic Designer",
+    imageUrl: "dukoteam20",
+  },
+  {
+    name: "Paula",
+    role: "UX Designer",
+    imageUrl: "dukoteam10",
+  },
+];
+
 // import { ref } from "@vue/reactivity";
 
 // const days = ref(0);
