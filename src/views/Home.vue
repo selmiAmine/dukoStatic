@@ -142,26 +142,28 @@
               >
                 The Crew behind Duko
               </h2>
-              <p class="text-xl text-gray-500">
-                Libero fames augue nisl porttitor nisi, quis. Id ac elit odio
-                vitae elementum enim vitae ullamcorper suspendisse. Vivamus
-                fringilla.
-              </p>
+              <p class="text-xl text-gray-500"></p>
             </div>
             <div class="lg:col-span-2">
               <ul
                 role="list"
                 class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8"
               >
-                <div class="memberPresentation col-span-2 bg-green-200">
-                  <div class="imgContainer w-1/2">
-                    <img src="../assets/keiko.png" alt="" />
-                  </div>
+                <div
+                  class="p-4 memberPresentation col-span-2 rounded-xl shadow-md transition-all"
+                >
+                  <h1 class="text-xl mb-2 font-medium">
+                    A Message from {{ people[state.selected].name }} !
+                  </h1>
+                  <p>
+                    {{ people[state.selected].description }}
+                  </p>
                 </div>
                 <li
-                  class="hover:bg-green-800 focus:bg-green-800 border-2 p-2 rounded-xl focus:text-white hover:text-white"
+                  class="border-2 p-2 rounded-xl hover:shadow-xl transition-shadow"
                   v-for="person in people"
                   :key="person.name"
+                  @click="switchUser(person.id)"
                 >
                   <div class="flex items-center space-x-4 lg:space-x-6">
                     <img
@@ -171,7 +173,7 @@
                     />
                     <div class="font-medium text-lg leading-6 space-y-1">
                       <h3>{{ person.name }}</h3>
-                      <p class="text-indigo-600">{{ person.role }}</p>
+                      <p class="text-primary-green">{{ person.role }}</p>
                     </div>
                   </div>
                 </li>
@@ -369,46 +371,64 @@ export default {
 <script setup>
 const people = [
   {
+    id: 0,
     name: "Keiko",
     role: "President - Board member",
-    imageUrl: "dukoteam2",
+    imageUrl: "dukoteam2-min",
     description:
       "When I started at the forerunner of DuKo I wanted to contribute to a project that supported sustainability. My parents raised my sister and I with the notion that we people need everything around us to live and everything on this planet has its own value and contribution to this planets existance.As cofounder of DuKo I strongly believe we all have our responsibility to protect this place we live on, our planet. Now that I have children of my own, I want them and future generations to enjoy this beautiful place too. Things will change and so does our planet, but I don't want to destroy it and I think none of us purposely want to do this. And that is why I continue my work with DuKo.Sustainability, Climate Change and subjects around these matters are so big and we as individuals feel so small. But I too believe that all our individual actions combined have a great impact. With DuKo I hope to contribute to helping others develop their own path to a have a less negative footprint.",
   },
   {
+    id: 1,
     name: "Leike",
     role: "Board member",
-    imageUrl: "dukoteam6",
+    imageUrl: "dukoteam6-min",
     description:
       "The main goal of my life is: to use my capabilities and knowledge to make a positive impact on this world. As a Visual Designer, I can be a mediator between the complexity of our world and the audience, to build up awareness and stimulate a change. Working for Duko is a way for me to reach my goal. What I found interesting, the very first time, is their way to front this big topic, which is sustainability, suggesting people just small steps. In my opinion, this is a good strategy to let them feel less stressed from the minor changes that they need to do.",
   },
   {
+    id: 2,
     name: "Gracia",
     role: "Social Media",
-    imageUrl: "dukoteam13",
+    imageUrl: "dukoteam13-min",
     description:
       "The reason why I joined the DuKo team is because I would like to learn more about sustainability. As a student, I noticed that I often found it difficult to make sustainable choices, because they often seem very expensive (at first glance). Over the past few years, I've been delving more and more into it, but I think I still have a lot to learn. I've had several PR positions in different student committees in the past so I think DuKo is the perfect way to apply this knowledge for our content while learning more about sustainability from an awesome team!",
   },
   {
+    id: 3,
     name: "Tarek",
     role: "Mobile Engineer",
-    imageUrl: "dukoteam7",
+    imageUrl: "dukoteam7-min",
     description:
       "Living on a clean and comfortable planet is a right, but also a duty for all of us. To achieve this goal, and as a mobile development engineer, I try to help the DuKo team to brainstorm and develop the technical parts of our solution that really help spread the culture of sustainability.",
   },
   {
+    id: 4,
     name: "Michela",
     role: "Graphic Designer",
-    imageUrl: "dukoteam20",
+    imageUrl: "dukoteam20-min",
+    description:
+      "The main goal of my life is: to use my capabilities and knowledge to make a positive impact on this world. As a Visual Designer, I can be a mediator between the complexity of our world and the audience, to build up awareness and stimulate a change. Working for Duko is a way for me to reach my goal. What I found interesting, the very first time, is their way to front this big topic, which is sustainability, suggesting people just small steps. In my opinion, this is a good strategy to let them feel less stressed from the minor changes that they need to do.",
   },
   {
+    id: 5,
     name: "Paula",
     role: "UX Designer",
-    imageUrl: "dukoteam10",
+    imageUrl: "dukoteam10-min",
+    description: "Await fro descri",
   },
 ];
 
-// import { ref } from "@vue/reactivity";
+import { reactive } from "@vue/reactivity";
+
+const state = reactive({
+  selected: 0,
+});
+
+const switchUser = (id) => {
+  state.selected = id;
+  console.log(id);
+};
 
 // const days = ref(0);
 // const hours = ref(0);
