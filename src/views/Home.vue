@@ -415,7 +415,8 @@ const people = [
     name: "Paula",
     role: "UX Designer",
     imageUrl: "dukoteam10-min",
-    description: "Await fro descri",
+    description:
+      "Since I was a kid, my father involved me into sustentability. Growing up, I realized how much we contaminated and how less we do. I love nature and the planet we live. My role in Duko is as UX designer and I joined to help with my skills to make more people conscious about the small steps you can do. I believe that if everyone do an action, doesn´t matter big or small, to help the planet; can do a lot for our future",
   },
 ];
 
