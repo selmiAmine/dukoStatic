@@ -155,9 +155,26 @@
                   <h1 class="text-xl mb-2 font-medium">
                     A Message from {{ people[state.selected].name }} !
                   </h1>
-                  <p>
-                    {{ people[state.selected].description }}
-                  </p>
+                  <div>
+                    <p v-if="viewAll">
+                      {{ people[state.selected].description }}
+                    </p>
+                    <p v-if="!viewAll">
+                      {{ people[state.selected].description.slice(0, 200) }} ..
+                    </p>
+                    <span
+                      v-if="!viewAll"
+                      class="cursor-pointer text-primary-green font-medium"
+                      @click="readMore"
+                      >Read more ...</span
+                    >
+                    <span
+                      v-if="viewAll"
+                      class="cursor-pointer text-primary-green font-medium"
+                      @click="readLess"
+                      >Read less
+                    </span>
+                  </div>
                 </div>
                 <li
                   class="border-2 p-2 rounded-xl hover:shadow-xl transition-shadow"
@@ -184,7 +201,7 @@
       </div>
     </div>
 
-    <div class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8">
+    <div class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8 px-4">
       <div
         class="titleAboutUS text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left"
       >
@@ -250,35 +267,39 @@
       </div>
 
       <div class="nameInputGroup mb-4">
-        <label class="text-white text-sm"> Your name</label>
+        <label class="text-white text-md"> Your name</label>
         <input
           type="text"
-          class="w-full text-xs bg-white text-gray-700 p-1 px-2"
+          v-model="questionForm.name"
+          class="w-full text-sm bg-white text-gray-700 p-1 px-2"
           placeholder="Please write your name !"
         />
       </div>
       <div class="emailInputGroup mb-4">
-        <label class="text-white text-sm"> Your email</label>
+        <label class="text-white text-md"> Your email</label>
         <input
           type="text"
-          class="w-full text-xs bg-white text-gray-700 p-1 px-2"
+          v-model="questionForm.email"
+          class="w-full text-sm bg-white text-gray-700 p-1 px-2"
           placeholder="Please write your email !"
         />
       </div>
       <div class="textAreaInputGroup mb-4">
-        <label class="text-white text-sm"> Your message</label>
+        <label class="text-white text-md"> Your message</label>
         <textarea
           name="yourMessage"
+          v-model="questionForm.message"
           id=""
           cols="30"
           rows="5"
-          class="w-full text-xs bg-white text-gray-700 p-1 px-2"
+          class="w-full text-sm bg-white text-gray-700 p-1 px-2"
           placeholder="Write your message"
         ></textarea>
       </div>
       <div class="buttonContainer w-full flex justify-center mt-2 mb-12">
         <button
-          class="bg-primary-pink w-full md:w-1/5 text-white text-sm py-1 px-12"
+          @click="storequestionForm"
+          class="bg-primary-pink w-full md:w-1/5 text-white text-md py-1 px-12"
         >
           Submit
         </button>
@@ -314,6 +335,13 @@ export default {
     displayMinutes: 0,
     displaySeconds: 0,
     email: "",
+    viewAll: false,
+
+    questionForm: {
+      email: "",
+      name: "",
+      question: "",
+    },
   }),
   computed: {
     _seconds: () => 1000,
@@ -341,6 +369,16 @@ export default {
       });
       console.log(docRef.id);
     },
+
+    async storequestionForm() {
+      const docRef = await addDoc(collection(db, "questionForm"), {
+        name: this.questionForm.name,
+        email: this.questionForm.email,
+        message: this.questionForm.message,
+      });
+      console.log(docRef.id);
+    },
+
     showRemaining() {
       const timer = setInterval(() => {
         const now = new Date();
@@ -362,6 +400,12 @@ export default {
         this.displayHours = hours < 10 ? "0" + hours : hours;
         this.displayDays = days < 10 ? "0" + days : days;
       }, 1000);
+    },
+    readMore() {
+      this.viewAll = true;
+    },
+    readLess() {
+      this.viewAll = false;
     },
   },
 };
