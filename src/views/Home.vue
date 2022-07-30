@@ -82,10 +82,10 @@
       </div>
     </div>
 
-    <div class="process max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8">
+    <div class="process max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8 md:mt-16">
       <div class="textTitle w-full flex justify-center">
         <div
-          class="text-primary-green text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left"
+          class="text-primary-green text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left md:mb-8"
         >
           Shop smarter and more <br />
           sustainable with Duko!
@@ -97,7 +97,11 @@
         >
           <div class="wrapperCon flex flex-col items-center justify-center">
             <div class="picture mb-4">
-              <img class="h-44 w-44" src="../assets/pic1.png" alt="" />
+              <img
+                class="h-44 md:h-60 md:w-60 w-44"
+                src="../assets/pic1.png"
+                alt=""
+              />
             </div>
             <div class="text-center text-primary-orange font-medium">
               Check out our partners and <br />blogs on green living
@@ -109,7 +113,11 @@
         >
           <div class="wrapperCon flex flex-col items-center justify-center">
             <div class="picture mb-4">
-              <img class="h-44 w-44" src="../assets/pic2.png" alt="" />
+              <img
+                class="h-44 w-44 md:h-60 md:w-60"
+                src="../assets/pic2.png"
+                alt=""
+              />
             </div>
             <div class="text-center text-primary-orange font-medium">
               Subscribe for tips and <br />special offers
@@ -121,7 +129,11 @@
         >
           <div class="wrapperCon flex flex-col items-center justify-center">
             <div class="picture mb-4">
-              <img class="h-44 w-44" src="../assets/pic3.png" alt="" />
+              <img
+                class="h-44 w-44 md:h-60 md:w-60"
+                src="../assets/pic3.png"
+                alt=""
+              />
             </div>
             <div class="text-center text-primary-orange font-medium">
               Make a difference with <br />
@@ -203,7 +215,7 @@
 
     <div class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8 px-4">
       <div
-        class="titleAboutUS text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left"
+        class="titleAboutUS text-primary-green text-3xl font-extrabold tracking-tight sm:text-4xl text-left px-2"
       >
         About us
       </div>
@@ -230,7 +242,7 @@
       <div class="misionAndVision md:flex px-2">
         <div class="missionSide">
           <div
-            class="titleMission text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left mt-4 mb-2"
+            class="titleMission text-primary-green text-left text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left mt-4 mb-2"
           >
             Mission
           </div>
@@ -242,7 +254,7 @@
         </div>
         <div class="visionSide">
           <div
-            class="titleVision text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left mt-4 mb-2"
+            class="titleVision text-primary-green text-left text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left mt-4 mb-2"
           >
             Vision
           </div>
@@ -459,6 +471,14 @@ const people = [
     name: "Paula",
     role: "UX Designer",
     imageUrl: "dukoteam10-min",
+    description:
+      "Since I was a kid, my father involved me into sustentability. Growing up, I realized how much we contaminated and how less we do. I love nature and the planet we live. My role in Duko is as UX designer and I joined to help with my skills to make more people conscious about the small steps you can do. I believe that if everyone do an action, doesn´t matter big or small, to help the planet; can do a lot for our future",
+  },
+  {
+    id: 6,
+    name: "Amine",
+    role: "Web Developer",
+    imageUrl: "dukoteam19-min",
     description:
       "Since I was a kid, my father involved me into sustentability. Growing up, I realized how much we contaminated and how less we do. I love nature and the planet we live. My role in Duko is as UX designer and I joined to help with my skills to make more people conscious about the small steps you can do. I believe that if everyone do an action, doesn´t matter big or small, to help the planet; can do a lot for our future",
   },
