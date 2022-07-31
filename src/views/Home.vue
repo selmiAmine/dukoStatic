@@ -1,9 +1,18 @@
 <template>
-  <div class="homeWrapper md:mb-8 md:pt-8">
-    <div
-      class="header bg-green-600 max-w-7xl mx-auto sm:px-6 lg:px-8 pt-8 pb-12 md:rounded-2xl"
-    >
-      <!-- <div class="logoWrap">
+  <div>
+    <transition>
+      <div
+        v-if="loader"
+        class="preloader transition duration-150 ease-out ease-in fixed flex justify-center items-center w-full h-full bg-primary-bg"
+      >
+        <div class="loader"></div>
+      </div>
+    </transition>
+    <div class="homeWrapper md:mb-8 md:pt-8">
+      <div
+        class="header bg-green-600 max-w-7xl mx-auto sm:px-6 lg:px-8 pt-8 pb-12 md:rounded-2xl"
+      >
+        <!-- <div class="logoWrap">
         <img class="dukoLogo" src="../assets/logoDuko.png" alt="" />
       </div>
       <div class="calenderElement">
@@ -32,296 +41,300 @@
         <img src="../assets/arrow.svg" alt="" />
       </div> -->
 
-      <div class="flex justify-center">
-        <img class="dukoLogo" src="../assets/logoDuko.png" alt="" />
-      </div>
-      <div class="w-full flex justify-evenly pt-24">
-        <div class="flex flex-col items-center">
-          <div class="text-3xl">{{ displayDays }}</div>
-          <div class="text-xl">Days</div>
+        <div class="flex justify-center">
+          <img class="dukoLogo" src="../assets/logoDuko.png" alt="" />
         </div>
-        <div class="flex flex-col items-center">
-          <div class="text-3xl">{{ displayHours }}</div>
-          <div class="text-xl">Hours</div>
-        </div>
-        <div class="flex flex-col items-center">
-          <div class="text-3xl">{{ displayMinutes }}</div>
-          <div class="text-xl">Minutes</div>
-        </div>
-        <div class="flex flex-col items-center hidden md:flex">
-          <div class="text-3xl">{{ displaySeconds }}</div>
-          <div class="text-xl">Seconds</div>
-        </div>
-      </div>
-      <div
-        class="mainText w-full md:flex md:flex-col md:items-center md:justify-center pt-8"
-      >
-        <div class="text-2xl md:text-4xl font-semibold md:mb-2">
-          We are working hard to launch our new website
-        </div>
-        <div class="text-md md:text-xl">
-          Please register to be notified when it’s ready! NOW
-        </div>
-      </div>
-
-      <div class="buttonSide w-full flex justify-center pt-20">
-        <div class="w-full flex flex-col md:flex-row md:w-1/2">
-          <input
-            v-model="email"
-            class="md:w-3/4 p-1 px-4 text-gray-800 text-center"
-            placeholder="Your Email"
-            type="text"
-          />
-          <button @click="storeEmail" class="md:w-1/4 p-1 bg-primary-pink">
-            Let me Know
-          </button>
-        </div>
-      </div>
-      <div class="w-full flex justify-center pt-12">
-        <img src="../assets/arrow.svg" alt="" />
-      </div>
-    </div>
-
-    <div class="process max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8 md:mt-16">
-      <div class="textTitle w-full flex justify-center">
-        <div
-          class="text-primary-green text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left md:mb-8"
-        >
-          Shop smarter and more <br />
-          sustainable with Duko!
-        </div>
-      </div>
-      <div class="pictureList w-full flex flex-col items-center justify-center">
-        <div
-          class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-start"
-        >
-          <div class="wrapperCon flex flex-col items-center justify-center">
-            <div class="picture mb-4">
-              <img
-                class="h-44 md:h-60 md:w-60 w-44"
-                src="../assets/pic1.png"
-                alt=""
-              />
-            </div>
-            <div class="text-center text-primary-orange font-medium">
-              Check out our partners and <br />blogs on green living
-            </div>
+        <div class="w-full flex justify-evenly pt-24">
+          <div class="flex flex-col items-center">
+            <div class="text-3xl">{{ displayDays }}</div>
+            <div class="text-xl">Days</div>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="text-3xl">{{ displayHours }}</div>
+            <div class="text-xl">Hours</div>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="text-3xl">{{ displayMinutes }}</div>
+            <div class="text-xl">Minutes</div>
+          </div>
+          <div class="flex flex-col items-center hidden md:flex">
+            <div class="text-3xl">{{ displaySeconds }}</div>
+            <div class="text-xl">Seconds</div>
           </div>
         </div>
         <div
-          class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-end"
+          class="mainText w-full md:flex md:flex-col md:items-center md:justify-center pt-8"
         >
-          <div class="wrapperCon flex flex-col items-center justify-center">
-            <div class="picture mb-4">
-              <img
-                class="h-44 w-44 md:h-60 md:w-60"
-                src="../assets/pic2.png"
-                alt=""
-              />
-            </div>
-            <div class="text-center text-primary-orange font-medium">
-              Subscribe for tips and <br />special offers
-            </div>
+          <div class="text-2xl md:text-4xl font-semibold md:mb-2">
+            We are working hard to launch our new website
+          </div>
+          <div class="text-md md:text-xl">
+            Please register to be notified when it’s ready! NOW
+          </div>
+        </div>
+
+        <div class="buttonSide w-full flex justify-center pt-20">
+          <div class="w-full flex flex-col md:flex-row md:w-1/2">
+            <input
+              v-model="email"
+              class="md:w-3/4 p-1 px-4 text-gray-800 text-center"
+              placeholder="Your Email"
+              type="text"
+            />
+            <button @click="storeEmail" class="md:w-1/4 p-1 bg-primary-pink">
+              Let me Know
+            </button>
+          </div>
+        </div>
+        <div class="w-full flex justify-center pt-12">
+          <img src="../assets/arrow.svg" alt="" />
+        </div>
+      </div>
+
+      <div class="process max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8 md:mt-16">
+        <div class="textTitle w-full flex justify-center">
+          <div
+            class="text-primary-green text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left md:mb-8"
+          >
+            Shop smarter and more <br />
+            sustainable with Duko!
           </div>
         </div>
         <div
-          class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-start"
+          class="pictureList w-full flex flex-col items-center justify-center"
         >
-          <div class="wrapperCon flex flex-col items-center justify-center">
-            <div class="picture mb-4">
-              <img
-                class="h-44 w-44 md:h-60 md:w-60"
-                src="../assets/pic3.png"
-                alt=""
-              />
+          <div
+            class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-start"
+          >
+            <div class="wrapperCon flex flex-col items-center justify-center">
+              <div class="picture mb-4">
+                <img
+                  class="h-44 md:h-60 md:w-60 w-44"
+                  src="../assets/pic1.png"
+                  alt=""
+                />
+              </div>
+              <div class="text-center text-primary-orange font-medium">
+                Check out our partners and <br />blogs on green living
+              </div>
             </div>
-            <div class="text-center text-primary-orange font-medium">
-              Make a difference with <br />
-              every euro you spend
+          </div>
+          <div
+            class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-end"
+          >
+            <div class="wrapperCon flex flex-col items-center justify-center">
+              <div class="picture mb-4">
+                <img
+                  class="h-44 w-44 md:h-60 md:w-60"
+                  src="../assets/pic2.png"
+                  alt=""
+                />
+              </div>
+              <div class="text-center text-primary-orange font-medium">
+                Subscribe for tips and <br />special offers
+              </div>
+            </div>
+          </div>
+          <div
+            class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-start"
+          >
+            <div class="wrapperCon flex flex-col items-center justify-center">
+              <div class="picture mb-4">
+                <img
+                  class="h-44 w-44 md:h-60 md:w-60"
+                  src="../assets/pic3.png"
+                  alt=""
+                />
+              </div>
+              <div class="text-center text-primary-orange font-medium">
+                Make a difference with <br />
+                every euro you spend
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="theTeam">
-      <div class="">
-        <div class="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
-          <div class="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
-            <div class="space-y-5 sm:space-y-4">
-              <h2
-                class="text-primary-green text-3xl font-extrabold tracking-tight sm:text-4xl"
-              >
-                The Crew behind Duko
-              </h2>
-              <p class="text-xl text-gray-500"></p>
-            </div>
-            <div class="lg:col-span-2">
-              <ul
-                role="list"
-                class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8"
-              >
-                <div
-                  class="p-4 memberPresentation col-span-2 rounded-xl shadow-md transition-all"
+      <div class="theTeam">
+        <div class="">
+          <div class="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+            <div class="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
+              <div class="space-y-5 sm:space-y-4">
+                <h2
+                  class="text-primary-green text-3xl font-extrabold tracking-tight sm:text-4xl"
                 >
-                  <h1 class="text-xl mb-2 font-medium">
-                    A Message from {{ people[state.selected].name }} !
-                  </h1>
-                  <div>
-                    <p v-if="viewAll">
-                      {{ people[state.selected].description }}
-                    </p>
-                    <p v-if="!viewAll">
-                      {{ people[state.selected].description.slice(0, 200) }} ..
-                    </p>
-                    <span
-                      v-if="!viewAll"
-                      class="cursor-pointer text-primary-green font-medium"
-                      @click="readMore"
-                      >Read more ...</span
-                    >
-                    <span
-                      v-if="viewAll"
-                      class="cursor-pointer text-primary-green font-medium"
-                      @click="readLess"
-                      >Read less
-                    </span>
-                  </div>
-                </div>
-                <li
-                  class="border-2 p-2 rounded-xl hover:shadow-xl transition-shadow"
-                  v-for="person in people"
-                  :key="person.name"
-                  @click="switchUser(person.id)"
+                  The Crew behind Duko
+                </h2>
+                <p class="text-xl text-gray-500"></p>
+              </div>
+              <div class="lg:col-span-2">
+                <ul
+                  role="list"
+                  class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8"
                 >
-                  <div class="flex items-center space-x-4 lg:space-x-6">
-                    <img
-                      class="object-cover w-16 h-16 rounded-full lg:w-20 lg:h-20"
-                      :src="getImgUrl(person.imageUrl)"
-                      alt
-                    />
-                    <div class="font-medium text-lg leading-6 space-y-1">
-                      <h3>{{ person.name }}</h3>
-                      <p class="text-primary-green">{{ person.role }}</p>
+                  <div
+                    class="p-4 memberPresentation col-span-2 rounded-xl shadow-md transition-all"
+                  >
+                    <h1 class="text-xl mb-2 font-medium">
+                      A Message from {{ people[state.selected].name }} !
+                    </h1>
+                    <div>
+                      <p v-if="viewAll">
+                        {{ people[state.selected].description }}
+                      </p>
+                      <p v-if="!viewAll">
+                        {{ people[state.selected].description.slice(0, 200) }}
+                        ..
+                      </p>
+                      <span
+                        v-if="!viewAll"
+                        class="cursor-pointer text-primary-green font-medium"
+                        @click="readMore"
+                        >Read more ...</span
+                      >
+                      <span
+                        v-if="viewAll"
+                        class="cursor-pointer text-primary-green font-medium"
+                        @click="readLess"
+                        >Read less
+                      </span>
                     </div>
                   </div>
-                </li>
-              </ul>
+                  <li
+                    class="border-2 p-2 rounded-xl hover:shadow-xl transition-shadow"
+                    v-for="person in people"
+                    :key="person.name"
+                    @click="switchUser(person.id)"
+                  >
+                    <div class="flex items-center space-x-4 lg:space-x-6">
+                      <img
+                        class="object-cover w-16 h-16 rounded-full lg:w-20 lg:h-20"
+                        :src="getImgUrl(person.imageUrl)"
+                        alt
+                      />
+                      <div class="font-medium text-lg leading-6 space-y-1">
+                        <h3>{{ person.name }}</h3>
+                        <p class="text-primary-green">{{ person.role }}</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8 px-4">
-      <div
-        class="titleAboutUS text-primary-green text-3xl font-extrabold tracking-tight sm:text-4xl text-left px-2"
-      >
-        About us
-      </div>
-      <p class="px-2 pt-4 md:mb-8">
-        DuKo is a foundation based in Utrecht that is committed to inspire
-        people to shop smart and sustainable. At DuKo we believe that we can
-        contribute to protecting the world by changing our consumption
-        behaviour. In this way we leave less of a footprint with our community
-        on this planet. <br /><br />
-
-        DuKo was founded in 2012, as an initiative by and for students. We have
-        been successful for many years within the student communities of various
-        student cities (Utrecht, Nijmegen, The Hague). Due in part to the Covid
-        pandemic, we have been struggling to keep our foundation going and we
-        have decided to let a breath of fresh air through our platform. At the
-        moment we are working hard to re-establish our service with the aim to
-        somehow make place world a better place. DuKo strives to make
-        sustainability accessible to everyone, by mapping (local) green shops
-        and offering special discounts on sustainable products for young people.
-        This shifts our focus from just offering discounts (previous use) to
-        building a community in which we mainly assist young people in their
-        search for a more sustainable lifestyle.
-      </p>
-      <div class="misionAndVision md:flex px-2">
-        <div class="missionSide">
-          <div
-            class="titleMission text-primary-green text-left text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left mt-4 mb-2"
-          >
-            Mission
-          </div>
-          <p class="md:w-4/5">
-            DuKo strives to empower people to consume in a smart way in order to
-            enjoy their lives to the fullest without having the planet pay for
-            it.
-          </p>
-        </div>
-        <div class="visionSide">
-          <div
-            class="titleVision text-primary-green text-left text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left mt-4 mb-2"
-          >
-            Vision
-          </div>
-          <p class="md:w-4/5">
-            DuKo strives to make sustainability accessible for everybody, by
-            gathering the green local stores and providing discounts on
-            sustainable products for the youth
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8 bg-primary-green p-8 md:rounded-xl"
-    >
-      <div class="titleAboutUS text-primary-green flex justify-center">
+      <div class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8 px-4">
         <div
-          class="textContent text-white text-2xl md:text-4xl font-medium mb-12"
+          class="titleAboutUS text-primary-green text-3xl font-extrabold tracking-tight sm:text-4xl text-left px-2"
         >
-          Got any question ...
+          About us
+        </div>
+        <p class="px-2 pt-4 md:mb-8">
+          DuKo is a foundation based in Utrecht that is committed to inspire
+          people to shop smart and sustainable. At DuKo we believe that we can
+          contribute to protecting the world by changing our consumption
+          behaviour. In this way we leave less of a footprint with our community
+          on this planet. <br /><br />
+
+          DuKo was founded in 2012, as an initiative by and for students. We
+          have been successful for many years within the student communities of
+          various student cities (Utrecht, Nijmegen, The Hague). Due in part to
+          the Covid pandemic, we have been struggling to keep our foundation
+          going and we have decided to let a breath of fresh air through our
+          platform. At the moment we are working hard to re-establish our
+          service with the aim to somehow make place world a better place. DuKo
+          strives to make sustainability accessible to everyone, by mapping
+          (local) green shops and offering special discounts on sustainable
+          products for young people. This shifts our focus from just offering
+          discounts (previous use) to building a community in which we mainly
+          assist young people in their search for a more sustainable lifestyle.
+        </p>
+        <div class="misionAndVision md:flex px-2">
+          <div class="missionSide">
+            <div
+              class="titleMission text-primary-green text-left text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left mt-4 mb-2"
+            >
+              Mission
+            </div>
+            <p class="md:w-4/5">
+              DuKo strives to empower people to consume in a smart way in order
+              to enjoy their lives to the fullest without having the planet pay
+              for it.
+            </p>
+          </div>
+          <div class="visionSide">
+            <div
+              class="titleVision text-primary-green text-left text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left mt-4 mb-2"
+            >
+              Vision
+            </div>
+            <p class="md:w-4/5">
+              DuKo strives to make sustainability accessible for everybody, by
+              gathering the green local stores and providing discounts on
+              sustainable products for the youth
+            </p>
+          </div>
         </div>
       </div>
 
-      <div class="nameInputGroup mb-4">
-        <label class="text-white text-md"> Your name</label>
-        <input
-          type="text"
-          v-model="questionForm.name"
-          class="w-full text-sm bg-white text-gray-700 p-1 px-2"
-          placeholder="Please write your name !"
-        />
-      </div>
-      <div class="emailInputGroup mb-4">
-        <label class="text-white text-md"> Your email</label>
-        <input
-          type="text"
-          v-model="questionForm.email"
-          class="w-full text-sm bg-white text-gray-700 p-1 px-2"
-          placeholder="Please write your email !"
-        />
-      </div>
-      <div class="textAreaInputGroup mb-4">
-        <label class="text-white text-md"> Your message</label>
-        <textarea
-          name="yourMessage"
-          v-model="questionForm.message"
-          id=""
-          cols="30"
-          rows="5"
-          class="w-full text-sm bg-white text-gray-700 p-1 px-2"
-          placeholder="Write your message"
-        ></textarea>
-      </div>
-      <div class="buttonContainer w-full flex justify-center mt-2 mb-12">
-        <button
-          @click="storequestionForm"
-          class="bg-primary-pink w-full md:w-1/5 text-white text-md py-1 px-12"
-        >
-          Submit
-        </button>
-      </div>
-      <div class="follow flex flex-col items-center justify-center">
-        <div class="textFollow text-white text-lg mb-4">
-          Or follow our journey...
+      <div
+        class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8 bg-primary-green p-8 md:rounded-xl"
+      >
+        <div class="titleAboutUS text-primary-green flex justify-center">
+          <div
+            class="textContent text-white text-2xl md:text-4xl font-medium mb-12"
+          >
+            Got any question ...
+          </div>
         </div>
-        <div class="instaLogo text-white text-4xl">
-          <i class="bx bxl-instagram"></i>
+
+        <div class="nameInputGroup mb-4">
+          <label class="text-white text-md"> Your name</label>
+          <input
+            type="text"
+            v-model="questionForm.name"
+            class="w-full text-sm bg-white text-gray-700 p-1 px-2"
+            placeholder="Please write your name !"
+          />
+        </div>
+        <div class="emailInputGroup mb-4">
+          <label class="text-white text-md"> Your email</label>
+          <input
+            type="text"
+            v-model="questionForm.email"
+            class="w-full text-sm bg-white text-gray-700 p-1 px-2"
+            placeholder="Please write your email !"
+          />
+        </div>
+        <div class="textAreaInputGroup mb-4">
+          <label class="text-white text-md"> Your message</label>
+          <textarea
+            name="yourMessage"
+            v-model="questionForm.message"
+            id=""
+            cols="30"
+            rows="5"
+            class="w-full text-sm bg-white text-gray-700 p-1 px-2"
+            placeholder="Write your message"
+          ></textarea>
+        </div>
+        <div class="buttonContainer w-full flex justify-center mt-2 mb-12">
+          <button
+            @click="storequestionForm"
+            class="bg-primary-pink w-full md:w-1/5 text-white text-md py-1 px-12"
+          >
+            Submit
+          </button>
+        </div>
+        <div class="follow flex flex-col items-center justify-center">
+          <div class="textFollow text-white text-lg mb-4">
+            Or follow our journey...
+          </div>
+          <div class="instaLogo text-white text-4xl">
+            <i class="bx bxl-instagram"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -348,6 +361,7 @@ export default {
     displaySeconds: 0,
     email: "",
     viewAll: false,
+    loader: true,
 
     questionForm: {
       email: "",
@@ -369,8 +383,15 @@ export default {
   },
   mounted() {
     this.showRemaining();
+    this.showLoader();
   },
   methods: {
+    showLoader() {
+      setTimeout(() => {
+        this.loader = false;
+      }, 3000);
+    },
+
     getImgUrl(pet) {
       var images = require.context("../assets/TeamsPics/", false, /\.jpg$/);
       return images("./" + pet + ".jpg");
@@ -512,6 +533,16 @@ const switchUser = (id) => {
 
 
 <style lang="scss">
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 1s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
 .home {
   // background: green;
 
@@ -668,6 +699,39 @@ const switchUser = (id) => {
         text-align: center;
       }
     }
+  }
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-bottom-color: #ff3d00;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 

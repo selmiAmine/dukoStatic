@@ -7,6 +7,7 @@ module.exports = {
         'primary-pink': '#DB0A5B',
         'primary-green': '#0C571B',
         'primary-orange': '#DA7F78',
+        'primary-bg': '#fffaed'
       },
     },
   },
