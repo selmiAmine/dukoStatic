@@ -44,7 +44,15 @@
         <div class="flex justify-center">
           <img class="dukoLogo" src="../assets/logoDuko.png" alt="" />
         </div>
-        <div class="w-full flex justify-evenly pt-24">
+
+        <h1
+          class="w-full md:text-center pt-24 font-bold text-2xl md:text-4xl font-semibold md:mb-2"
+        >
+          Coming soon
+        </h1>
+
+        <!-- Counter -->
+        <!-- <div class="w-full flex justify-evenly pt-24">
           <div class="flex flex-col items-center">
             <div class="text-3xl">{{ displayDays }}</div>
             <div class="text-xl">Days</div>
@@ -61,7 +69,7 @@
             <div class="text-3xl">{{ displaySeconds }}</div>
             <div class="text-xl">Seconds</div>
           </div>
-        </div>
+        </div> -->
         <div
           class="mainText w-full md:flex md:flex-col md:items-center md:justify-center pt-8"
         >
@@ -69,7 +77,7 @@
             We are working hard to launch our new website
           </div>
           <div class="text-md md:text-xl">
-            Please register to be notified when it’s ready! NOW
+            Please register to be notified when it’s ready!
           </div>
         </div>
 
@@ -82,7 +90,7 @@
               type="text"
             />
             <button @click="storeEmail" class="md:w-1/4 p-1 bg-primary-pink">
-              Let me Know
+              Let me posted
             </button>
           </div>
         </div>
@@ -94,17 +102,22 @@
       <div class="process max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8 md:mt-16">
         <div class="textTitle w-full flex justify-center">
           <div
-            class="text-primary-green text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left md:mb-8"
+            class="text-primary-green text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left md:mb-2"
           >
             Shop smarter and more <br />
-            sustainable with Duko!
+            sustainable with DuKo!
           </div>
+        </div>
+        <div
+          class="w-full flex justify-center text-primary-green text-primary-green text-center text-lg font-bold tracking-tight sm:text-xl md:text-left md:mb-8"
+        >
+          What To expect ?
         </div>
         <div
           class="pictureList w-full flex flex-col items-center justify-center"
         >
           <div
-            class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-start"
+            class="picturewrapper w-2/3 pt-8 flex justify-center md:justify-start"
           >
             <div class="wrapperCon flex flex-col items-center justify-center">
               <div class="picture mb-4">
@@ -120,7 +133,7 @@
             </div>
           </div>
           <div
-            class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-end"
+            class="picturewrapper w-2/3 pt-8 flex justify-center md:justify-end"
           >
             <div class="wrapperCon flex flex-col items-center justify-center">
               <div class="picture mb-4">
@@ -136,7 +149,7 @@
             </div>
           </div>
           <div
-            class="picturewrapper w-3/4 pt-8 flex justify-center md:justify-start"
+            class="picturewrapper w-2/3 pt-8 flex justify-center md:justify-start"
           >
             <div class="wrapperCon flex flex-col items-center justify-center">
               <div class="picture mb-4">
@@ -158,7 +171,7 @@
       <div class="theTeam">
         <div class="">
           <div class="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
-            <div class="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-8">
               <div class="space-y-5 sm:space-y-4">
                 <h2
                   class="text-primary-green text-3xl font-extrabold tracking-tight sm:text-4xl"
@@ -251,7 +264,7 @@
           discounts (previous use) to building a community in which we mainly
           assist young people in their search for a more sustainable lifestyle.
         </p>
-        <div class="misionAndVision md:flex px-2">
+        <!-- <div class="misionAndVision md:flex px-2">
           <div class="missionSide">
             <div
               class="titleMission text-primary-green text-left text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left mt-4 mb-2"
@@ -276,7 +289,7 @@
               sustainable products for the youth
             </p>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div
@@ -286,7 +299,7 @@
           <div
             class="textContent text-white text-2xl md:text-4xl font-medium mb-12"
           >
-            Got any question ...
+            Got any questions ...
           </div>
         </div>
 
@@ -296,7 +309,6 @@
             type="text"
             v-model="questionForm.name"
             class="w-full text-sm bg-white text-gray-700 p-1 px-2"
-            placeholder="Please write your name !"
           />
         </div>
         <div class="emailInputGroup mb-4">
@@ -305,7 +317,6 @@
             type="text"
             v-model="questionForm.email"
             class="w-full text-sm bg-white text-gray-700 p-1 px-2"
-            placeholder="Please write your email !"
           />
         </div>
         <div class="textAreaInputGroup mb-4">
@@ -330,7 +341,7 @@
         </div>
         <div class="follow flex flex-col items-center justify-center">
           <div class="textFollow text-white text-lg mb-4">
-            Or follow our journey...
+            Follow our journey...
           </div>
           <div class="instaLogo text-white text-4xl">
             <i class="bx bxl-instagram"></i>
@@ -453,11 +464,11 @@ const people = [
     role: "President - Board member",
     imageUrl: "dukoteam2-min",
     description:
-      "When I started at the forerunner of DuKo I wanted to contribute to a project that supported sustainability. My parents raised my sister and I with the notion that we people need everything around us to live and everything on this planet has its own value and contribution to this planets existance.As cofounder of DuKo I strongly believe we all have our responsibility to protect this place we live on, our planet. Now that I have children of my own, I want them and future generations to enjoy this beautiful place too. Things will change and so does our planet, but I don't want to destroy it and I think none of us purposely want to do this. And that is why I continue my work with DuKo.Sustainability, Climate Change and subjects around these matters are so big and we as individuals feel so small. But I too believe that all our individual actions combined have a great impact. With DuKo I hope to contribute to helping others develop their own path to a have a less negative footprint.",
+      "When I started at the forerunner of DuKo I wanted to contribute to a project that supported sustainability. My parents raised my sister and I with the notion that we people need everything around us to live and everything on this planet has its own value and contribution to this planets existance. As cofounder of DuKo I strongly believe we all have our responsibility to protect this place we live on, our planet. Now that I have children of my own, I want them and future generations to enjoy this beautiful place too. Things will change and so does our planet, but I don't want to destroy it and I think none of us purposely want to do this. And that is why I continue my work with DuKo. Sustainability, climate change and subjects around these matters are so big and we as individuals feel so small. But I too believe that all our individual actions combined have a great impact. With DuKo I hope to contribute to helping others develop their own path to a have a less negative footprint.",
   },
   {
     id: 1,
-    name: "Leike",
+    name: "Lieke",
     role: "Board member",
     imageUrl: "dukoteam6-min",
     description:
@@ -466,7 +477,7 @@ const people = [
   {
     id: 2,
     name: "Gracia",
-    role: "Social Media",
+    role: "Board member",
     imageUrl: "dukoteam13-min",
     description:
       "The reason why I joined the DuKo team is because I would like to learn more about sustainability. As a student, I noticed that I often found it difficult to make sustainable choices, because they often seem very expensive (at first glance). Over the past few years, I've been delving more and more into it, but I think I still have a lot to learn. I've had several PR positions in different student committees in the past so I think DuKo is the perfect way to apply this knowledge for our content while learning more about sustainability from an awesome team!",
