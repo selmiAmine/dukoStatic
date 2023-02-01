@@ -1,53 +1,181 @@
 <template>
   <div>
+
     <transition>
-      <div
-        v-if="loader"
-        class="preloader transition duration-150 ease-out ease-in fixed flex justify-center items-center w-full h-full bg-primary-bg"
-      >
+      <div v-if="loader"
+        class="preloader transition duration-150 ease-out ease-in fixed flex justify-center items-center w-full h-full bg-primary-bg">
         <div class="loader"></div>
       </div>
     </transition>
-    <div class="homeWrapper md:mb-8 md:pt-8">
-      <div
-        class="header bg-green-600 max-w-7xl mx-auto sm:px-6 lg:px-8 pt-8 pb-12 md:rounded-2xl"
-      >
-        <!-- <div class="logoWrap">
-        <img class="dukoLogo" src="../assets/logoDuko.png" alt="" />
+
+    <div class="homeWrapper  md:mb-8 md:pt-8">
+      <div class="sm:hidden sticky top-0 vacancyButton bg-primary-green text-white text-sm py-2 px-4">
+        WE ARE LOOKING FOR YOU! - We are expanding our team! Take a look at <span class="underline cursor-pointer"
+          @click="open = true"> our vacancies</span>
       </div>
-      <div class="calenderElement">
-        <div class="col">
-          <div class="val1">143</div>
-          <div class="val2">Days</div>
-        </div>
-        <div class="col">
-          <div class="val1">00</div>
-          <div class="val2">Days</div>
-        </div>
-        <div class="col">
-          <div class="val1">00</div>
-          <div class="val2">Days</div>
-        </div>
-      </div>
-      <div class="textElem">
-        <div class="text1">We are working hard to launch our new website</div>
-        <div class="parag">Please register to be notified when it’s ready!</div>
-      </div>
-      <div class="cta-input">
-        <input placeholder="Your Email" type="text" />
-        <button>Let me Know</button>
-      </div>
-      <div class="arrow">
-        <img src="../assets/arrow.svg" alt="" />
-      </div> -->
+      <TransitionRoot as="template" :show="open">
+        <Dialog as="div" class="relative z-10" @close="open = false">
+          <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100"
+            leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
+            <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" />
+          </TransitionChild>
+
+          <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center items-center sm:p-0">
+              <TransitionChild as="template" enter="ease-out duration-300"
+                enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200"
+                leave-from="opacity-100 translate-y-0 sm:scale-100"
+                leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+                <DialogPanel
+                  class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl sm:p-6">
+                  <div class="xIcon mb-4 flex justify-end text-black text-4xl">
+                    <i @click="open = false" class="bx bx-x"></i>
+                  </div>
+                  <div class="flex">
+                    <div>
+                      <div class="backgroundIMGVacancies py-12 rounded-lg text-white text-center">
+                        <h4 class="text-2xl font-bold">Vacancies</h4>
+                        <p class="mt-1">
+                          Our team is looking for new volunteers to help us
+                          <br />
+                          strenghten our brand!
+                        </p>
+                      </div>
+
+
+                      <div class="content  md:px-8">
+
+                        <div class="mt-6 w-full flex flex-col md:flex-row">
+                          <div class="mr-4 md:w-1/4  text-xl font-bold flex-shrink-0">
+                            WIJ ZOEKEN JOU! 🇳🇱
+                          </div>
+                          <div class=" md:w-3/4">
+                            <!-- <h4 class="text-lg font-bold">Lorem ipsum</h4> -->
+                            <p class="mt-1 ">
+                              Na een succesvolle periode op het gebied van
+                              rebranding en verfijning van onze doelgroep, focus
+                              en look, kijken wij er naar uit om ons team compleet
+                              te maken met nieuwe bestuursleden. <br />
+                              Voor een compleet team, zijn wij momenteel op zoek
+                              naar een Community Manager, Partner Manager, Finance
+                              Manager en Shop Manager. <br />
+                              Meer weten? Bekijk de vacatures op deze pagina.
+                            </p>
+                          </div>
+                        </div>
+                        <div class="mt-6 w-full flex flex-col md:flex-row">
+                          <div class="mr-4 md:w-1/4 text-xl font-bold flex-shrink-0">
+                            WE ARE LOOKING FOR YOU! 🇬🇧
+                          </div>
+                          <div class="md:w-3/4">
+                            <!-- <h4 class="text-lg font-bold">Lorem ipsum</h4> -->
+                            <p class="mt-1  ">
+                              After a successful period of rebranding and refining
+                              our target group, focus and look, we look forward to
+                              completing our team with new board members. <br />
+                              For a complete team, we are currently looking for a
+                              Community Manager, Partner Manager, Finance Manager
+                              and Shop Manager.<br />
+                              Want to know more? View the vacancies* on this page.
+                              <br />
+                              * Though we have a diverse and
+                              multicultural/multilingual team, for these specific
+                              vacancies we are looking for people who are fluent
+                              in both English and Dutch. Therefore, the vacancies
+                              are written in Dutch.
+                            </p>
+                          </div>
+                        </div>
+                        <div class="mt-6 w-full flex flex-col md:flex-row">
+                          <div class="mr-4 mb-4 md:w-1/4 text-xl font-bold flex-shrink-0">
+                            VACANCIES
+                          </div>
+
+                          <div class=" md:w-3/4">
+                            <div class="mb-2 border-t-2">
+                              <h4 class="text-md font-bold">Shop Manager</h4>
+                              <p class="mt-1">
+                                Wij zijn op zoek naar een nieuw bestuurslid in de
+                                vorm van een Shop Manager. In het verleden hebben
+                                wij sterke banden opgebouwd met diverse fysieke en
+                                online stores. Als Shop Manager ben jij
+                                verantwoordelijk voor het onderhouden van de
+                                bestaande contacten en het aanleggen van nieuwe
+                                relaties met (nieuwe) winkeliers die onderdeel
+                                willen zijn van de DUKO community.
+                              </p>
+                              <div class="mt-2">
+                                <a href="https://drive.google.com/file/d/1rWbK6sv2U1wE48xiTY1U0_9FvWrGrsC0/view"
+                                  target="_blank">
+                                  <span class="mr-4 underline  cursor-pointer">Meer info</span></a>
+                                <span class="underline cursor-pointer"><a href="mailto:info@shopduko.nl"> Reageer
+                                    direct</a></span>
+                              </div>
+                            </div>
+                            <div class="mb-2 border-t-2">
+                              <h4 class="text-md font-bold">Finance Manager</h4>
+                              <p class="mt-1">
+                                Wij zijn op zoek naar een nieuw bestuurslid in de
+                                vorm van een Finance Manager. Als Finance Manager
+                                ben jij verantwoordelijk voor het op orde maken en
+                                houden van de (financiële) administratie en het
+                                aanvragen van fondsen. Je taken zijn gericht op het
+                                in orde houden van de cijfers en het verzorgen van
+                                het jaarverslag.
+                              </p>
+                              <div class="mt-2">
+                                <a target="_blank"
+                                  href="https://drive.google.com/file/d/1R_B-PAIQtQw2aF6LDmzVlq9eD8QDLDWg/view">
+                                  <span class="mr-4 underline cursor-pointer">Meer info</span></a>
+                                <span class="underline cursor-pointer"><a href="mailto:info@shopduko.nl"> Reageer
+                                    direct</a></span>
+                              </div>
+                            </div>
+                            <div class="mb-2 border-t-2">
+                              <h4 class="text-md font-bold">Community Manager</h4>
+                              <p class="mt-1">
+                                Over jouw rol: Community Manager Wij zijn op zoek
+                                naar een nieuw bestuurslid in de vorm van een
+                                Community Manager. Als Community Manager ben jij
+                                verantwoordelijk voor de verslaglegging binnen ons
+                                bestuur. Zo is een van je belangrijkste taken het
+                                maken van de notulen (kort en bondig) tijdens
+                                vergaderingen, maar ook het coördineren van de DuKo
+                                mailbox en het onderhouden van (mail)contact.
+                              </p>
+                              <div class="mt-2">
+                                <a target="_blank"
+                                  href="https://drive.google.com/file/d/1rPUM7AgROlhs1KBC4jnxbtABf8Tki8PR/view">
+                                  <span class="mr-4 underline cursor-pointer">Meer info</span></a>
+                                <span class="underline cursor-pointer"><a href="mailto:info@shopduko.nl"> Reageer
+                                    direct</a></span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                    </div>
+                  </div>
+                  <!-- <div class="mt-5 sm:mt-6">
+                <button type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm" @click="open = false">Go back to dashboard</button>
+              </div> -->
+                </DialogPanel>
+              </TransitionChild>
+            </div>
+          </div>
+        </Dialog>
+      </TransitionRoot>
+      <div class="header bg-green-600 max-w-7xl mx-auto sm:px-6 lg:px-8 pt-8 pb-12 md:rounded-2xl">
 
         <div class="flex justify-center">
           <img class="dukoLogo" src="../assets/logoDuko.png" alt="" />
         </div>
 
-        <h1
-          class="w-full md:text-center pt-24 font-bold text-2xl md:text-4xl font-semibold md:mb-2"
-        >
+        <h1 class="w-full md:text-center pt-24 font-bold text-2xl md:text-4xl font-semibold md:mb-2">
           Coming soon
         </h1>
 
@@ -70,9 +198,7 @@
             <div class="text-xl">Seconds</div>
           </div>
         </div> -->
-        <div
-          class="mainText w-full md:flex md:flex-col md:items-center md:justify-center pt-8"
-        >
+        <div class="mainText w-full md:flex md:flex-col md:items-center md:justify-center pt-8">
           <div class="text-2xl md:text-4xl font-semibold md:mb-2">
             We are working hard to launch our new website
           </div>
@@ -83,14 +209,12 @@
 
         <div class="buttonSide w-full flex justify-center pt-20">
           <div class="w-full flex flex-col md:flex-row md:w-1/2">
-            <input
-              v-model="email"
-              class="md:w-3/4 p-1 px-4 text-gray-800 text-center"
-              placeholder="Your Email"
-              type="text"
-            />
-            <button @click="storeEmail" class="md:w-1/4 p-1 bg-primary-pink">
-              Let me posted
+            <input v-if="!mainSubmission" v-model="email" class="input1 md:w-3/4 p-1 px-4 text-gray-800 text-center"
+              placeholder="Your Email" type="text" />
+            <input v-if="mainSubmission" disabled class="input2 md:w-3/4 p-1 px-4 text-center"
+              placeholder="Thank you for submitting" type="text" />
+            <button @click="validateEmail" class="md:w-1/4 p-1 bg-primary-pink">
+              Keep me posted
             </button>
           </div>
         </div>
@@ -102,62 +226,40 @@
       <div class="process max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8 md:mt-16">
         <div class="textTitle w-full flex justify-center">
           <div
-            class="text-primary-green text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left md:mb-2"
-          >
+            class="text-primary-green text-primary-green text-center text-3xl font-extrabold tracking-tight sm:text-4xl md:text-left md:mb-2">
             Shop smarter and more <br />
             sustainable with DuKo!
           </div>
         </div>
         <div
-          class="w-full flex justify-center text-primary-green text-primary-green text-center text-lg font-bold tracking-tight sm:text-xl md:text-left md:mb-8"
-        >
-          What To expect ?
+          class="w-full flex justify-center text-primary-green text-primary-green text-center text-lg font-bold tracking-tight sm:text-xl md:text-left md:mb-8">
+          What to expect ?
         </div>
-        <div
-          class="pictureList w-full flex flex-col items-center justify-center"
-        >
-          <div
-            class="picturewrapper w-2/3 pt-8 flex justify-center md:justify-start"
-          >
+        <div class="pictureList w-full flex flex-col items-center justify-center">
+          <div class="picturewrapper w-2/3 pt-8 flex justify-center md:justify-start">
             <div class="wrapperCon flex flex-col items-center justify-center">
               <div class="picture mb-4">
-                <img
-                  class="h-44 md:h-60 md:w-60 w-44"
-                  src="../assets/pic1.png"
-                  alt=""
-                />
+                <img class="h-44 md:h-60 md:w-60 w-44" src="../assets/pic1.png" alt="" />
               </div>
               <div class="text-center text-primary-orange font-medium">
                 Check out our partners and <br />blogs on green living
               </div>
             </div>
           </div>
-          <div
-            class="picturewrapper w-2/3 pt-8 flex justify-center md:justify-end"
-          >
+          <div class="picturewrapper w-2/3 pt-8 flex justify-center md:justify-end">
             <div class="wrapperCon flex flex-col items-center justify-center">
               <div class="picture mb-4">
-                <img
-                  class="h-44 w-44 md:h-60 md:w-60"
-                  src="../assets/pic2.png"
-                  alt=""
-                />
+                <img class="h-44 w-44 md:h-60 md:w-60" src="../assets/pic2.png" alt="" />
               </div>
               <div class="text-center text-primary-orange font-medium">
                 Subscribe for tips and <br />special offers
               </div>
             </div>
           </div>
-          <div
-            class="picturewrapper w-2/3 pt-8 flex justify-center md:justify-start"
-          >
+          <div class="picturewrapper w-2/3 pt-8 flex justify-center md:justify-start">
             <div class="wrapperCon flex flex-col items-center justify-center">
               <div class="picture mb-4">
-                <img
-                  class="h-44 w-44 md:h-60 md:w-60"
-                  src="../assets/pic3.png"
-                  alt=""
-                />
+                <img class="h-44 w-44 md:h-60 md:w-60" src="../assets/pic3.png" alt="" />
               </div>
               <div class="text-center text-primary-orange font-medium">
                 Make a difference with <br />
@@ -173,21 +275,14 @@
           <div class="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
             <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-8">
               <div class="space-y-5 sm:space-y-4">
-                <h2
-                  class="text-primary-green text-3xl font-extrabold tracking-tight sm:text-4xl"
-                >
-                  The Crew behind Duko
+                <h2 class="text-primary-green text-3xl font-extrabold tracking-tight sm:text-4xl">
+                  The Crew behind DuKo
                 </h2>
                 <p class="text-xl text-gray-500"></p>
               </div>
               <div class="lg:col-span-2">
-                <ul
-                  role="list"
-                  class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8"
-                >
-                  <div
-                    class="p-4 memberPresentation col-span-2 rounded-xl shadow-md transition-all"
-                  >
+                <ul role="list" class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8">
+                  <div class="p-4 memberPresentation col-span-2 rounded-xl shadow-md transition-all">
                     <h1 class="text-xl mb-2 font-medium">
                       A Message from {{ people[state.selected].name }} !
                     </h1>
@@ -199,32 +294,18 @@
                         {{ people[state.selected].description.slice(0, 200) }}
                         ..
                       </p>
-                      <span
-                        v-if="!viewAll"
-                        class="cursor-pointer text-primary-green font-medium"
-                        @click="readMore"
-                        >Read more ...</span
-                      >
-                      <span
-                        v-if="viewAll"
-                        class="cursor-pointer text-primary-green font-medium"
-                        @click="readLess"
-                        >Read less
+                      <span v-if="!viewAll" class="cursor-pointer text-primary-green font-medium" @click="readMore">Read
+                        more ...</span>
+                      <span v-if="viewAll" class="cursor-pointer text-primary-green font-medium" @click="readLess">Read
+                        less
                       </span>
                     </div>
                   </div>
-                  <li
-                    class="border-2 p-2 rounded-xl hover:shadow-xl transition-shadow"
-                    v-for="person in people"
-                    :key="person.name"
-                    @click="switchUser(person.id)"
-                  >
+                  <li class="border-2 p-2 rounded-xl hover:shadow-xl transition-shadow" v-for="person in people"
+                    :key="person.name" @click="switchUser(person.id)">
                     <div class="flex items-center space-x-4 lg:space-x-6">
-                      <img
-                        class="object-cover w-16 h-16 rounded-full lg:w-20 lg:h-20"
-                        :src="getImgUrl(person.imageUrl)"
-                        alt
-                      />
+                      <img class="object-cover w-16 h-16 rounded-full lg:w-20 lg:h-20" :src="getImgUrl(person.imageUrl)"
+                        alt />
                       <div class="font-medium text-lg leading-6 space-y-1">
                         <h3>{{ person.name }}</h3>
                         <p class="text-primary-green">{{ person.role }}</p>
@@ -238,10 +319,20 @@
         </div>
       </div>
 
+      <div class="vacancies hidden md:block max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8 px-4">
+        <div class="titleAboutUS text-primary-green text-3xl font-extrabold tracking-tight sm:text-4xl text-left px-2">
+          Vacancies
+        </div>
+        <p class="px-2 pt-4 mb-4">
+          We are expanding our team ! Check out our open position on our vacancies page and apply now.
+        </p>
+        <button @click="open = true" class="md:mb-8 md:w-1/5 p-1 bg-primary-pink text-white rounded-md">
+          Vacancies
+        </button>
+      </div>
+
       <div class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4 mt-8 px-4">
-        <div
-          class="titleAboutUS text-primary-green text-3xl font-extrabold tracking-tight sm:text-4xl text-left px-2"
-        >
+        <div class="titleAboutUS text-primary-green text-3xl font-extrabold tracking-tight sm:text-4xl text-left px-2">
           About us
         </div>
         <p class="px-2 pt-4 md:mb-8">
@@ -292,52 +383,34 @@
         </div> -->
       </div>
 
-      <div
-        class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8 bg-primary-green p-8 md:rounded-xl"
-      >
+      <div class="aboutUS max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8 bg-primary-green p-8 md:rounded-xl">
         <div class="titleAboutUS text-primary-green flex justify-center">
-          <div
-            class="textContent text-white text-2xl md:text-4xl font-medium mb-12"
-          >
+          <div class="textContent text-white text-2xl md:text-4xl font-medium mb-12">
             Got any questions ...
           </div>
         </div>
 
         <div class="nameInputGroup mb-4">
           <label class="text-white text-md"> Your name</label>
-          <input
-            type="text"
-            v-model="questionForm.name"
-            class="w-full text-sm bg-white text-gray-700 p-1 px-2"
-          />
+          <input type="text" v-model="questionForm.name" class="w-full text-sm bg-white text-gray-700 p-1 px-2" />
         </div>
         <div class="emailInputGroup mb-4">
           <label class="text-white text-md"> Your email</label>
-          <input
-            type="text"
-            v-model="questionForm.email"
-            class="w-full text-sm bg-white text-gray-700 p-1 px-2"
-          />
+          <input type="email" v-model="questionForm.email" class="w-full text-sm bg-white text-gray-700 p-1 px-2" />
         </div>
         <div class="textAreaInputGroup mb-4">
           <label class="text-white text-md"> Your message</label>
-          <textarea
-            name="yourMessage"
-            v-model="questionForm.message"
-            id=""
-            cols="30"
-            rows="5"
-            class="w-full text-sm bg-white text-gray-700 p-1 px-2"
-            placeholder="Write your message"
-          ></textarea>
+          <textarea name="yourMessage" v-model="questionForm.message" id="" cols="30" rows="5"
+            class="w-full text-sm bg-white text-gray-700 p-1 px-2" placeholder="Write your message"></textarea>
         </div>
         <div class="buttonContainer w-full flex justify-center mt-2 mb-12">
-          <button
-            @click="storequestionForm"
-            class="bg-primary-pink w-full md:w-1/5 text-white text-md py-1 px-12"
-          >
+          <button v-if="!formSubmission" @click="validateQuestionForm"
+            class="bg-primary-pink w-full md:w-1/5 text-white text-md py-1 px-12">
             Submit
           </button>
+          <div class="text-white" v-if="formSubmission">
+            Thank you for submitting
+          </div>
         </div>
         <div class="follow flex flex-col items-center justify-center">
           <div class="textFollow text-white text-lg mb-4">
@@ -366,6 +439,9 @@ export default {
   },
 
   data: () => ({
+    mainSubmission: false,
+    formSubmission: false,
+
     displayDays: 0,
     displayHours: 0,
     displayMinutes: 0,
@@ -373,6 +449,8 @@ export default {
     email: "",
     viewAll: false,
     loader: true,
+    /* eslint-disable */
+    reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
 
     questionForm: {
       email: "",
@@ -397,6 +475,15 @@ export default {
     this.showLoader();
   },
   methods: {
+    validateEmail() {
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
+        console.log(this.email);
+        this.storeEmail();
+        this.mainSubmission = true;
+      } else {
+        console.log(this.email);
+      }
+    },
     showLoader() {
       setTimeout(() => {
         this.loader = false;
@@ -408,19 +495,36 @@ export default {
       return images("./" + pet + ".jpg");
     },
     async storeEmail() {
-      const docRef = await addDoc(collection(db, "emails"), {
+      await addDoc(collection(db, "emails"), {
         email: this.email,
       });
-      console.log(docRef.id);
+      this.mainSubmission = true;
+      // console.log(docRef.id);
+      console.log(this.mainSubmission);
+    },
+
+    validateQuestionForm() {
+      if (
+        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+          this.questionForm.email
+        ) &&
+        this.questionForm.name &&
+        this.questionForm.message
+      ) {
+        this.storequestionForm();
+        this.formSubmission = true;
+      } else {
+        console.log("error");
+      }
     },
 
     async storequestionForm() {
-      const docRef = await addDoc(collection(db, "questionForm"), {
+      await addDoc(collection(db, "questionForm"), {
         name: this.questionForm.name,
         email: this.questionForm.email,
         message: this.questionForm.message,
       });
-      console.log(docRef.id);
+      // console.log(docRef.id);
     },
 
     showRemaining() {
@@ -457,6 +561,18 @@ export default {
 
 
 <script setup>
+import { reactive } from "@vue/reactivity";
+import { ref } from "vue";
+import {
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  TransitionChild,
+  TransitionRoot,
+} from "@headlessui/vue";
+// import { CheckIcon } from '@heroicons/vue/24/outline'
+
+const open = ref(false);
 const people = [
   {
     id: 0,
@@ -516,8 +632,6 @@ const people = [
   },
 ];
 
-import { reactive } from "@vue/reactivity";
-
 const state = reactive({
   selected: 0,
 });
@@ -543,7 +657,7 @@ const switchUser = (id) => {
 </script>
 
 
-<style lang="scss">
+<style >
 .v-enter-active,
 .v-leave-active {
   transition: opacity 1s ease;
@@ -555,162 +669,92 @@ const switchUser = (id) => {
 }
 
 .home {
-  // background: green;
-
-  .container {
-    padding: 1rem;
-  }
+  /* background: green; */
 }
+
+.home .container {
+  padding: 1rem;
+}
+
+.header .dukoLogo {
+  height: 3.5rem;
+  widows: 3.5rem;
+}
+
+.header .calenderElement {
+  margin-top: 7.6em;
+  margin-bottom: 1.6em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* background: red; */
+  max-width: 30rem;
+  width: 30rem;
+}
+
+.header .calenderElement .col {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  /* background: rgb(133, 133, 129); */
+}
+
+.header .calenderElement .col.val1 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 0.9em;
+}
+
+.header .calenderElement .col .val2 {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.header .input1::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+  opacity: 1;
+  /* Firefox */
+}
+
+.header .input2::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1;
+  /* Firefox */
+}
+
+.header .textElem {
+  text-align: center;
+  margin-bottom: 4.5em;
+}
+
+.header .textElem .text1 {
+  font-size: 2.5em;
+  font-weight: 500;
+  /* line-height: 3em; */
+}
+
+.header .textElem .parag {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
 .header {
-  // background: rgb(102, 95, 95);
+  /* background: rgb(102, 95, 95); */
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // margin: 1rem;
+  /* margin: 1rem; */
   padding: 1rem;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),
     url(../assets/bg.png) no-repeat;
 
   background-size: cover;
-  .dukoLogo {
-    height: 3.5rem;
-    widows: 3.5rem;
-  }
-
-  .calenderElement {
-    margin-top: 7.6em;
-    margin-bottom: 1.6em;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    // background: red;
-    max-width: 30rem;
-    width: 30rem;
-
-    .col {
-      display: flex;
-      flex-direction: column;
-      align-content: center;
-      justify-content: center;
-      // background: rgb(133, 133, 129);
-
-      .val1 {
-        text-align: center;
-        font-size: 2.5em;
-        margin-bottom: 0.9em;
-      }
-
-      .val2 {
-        text-align: center;
-        font-size: 1.5em;
-      }
-    }
-  }
-
-  .textElem {
-    text-align: center;
-    margin-bottom: 4.5em;
-    .text1 {
-      font-size: 2.5em;
-      font-weight: 500;
-      // line-height: 3em;
-    }
-    .parag {
-      font-size: 1.5em;
-      font-weight: 400;
-    }
-  }
-
-  .cta-input {
-    min-width: 42em;
-    background: white;
-    height: 2.5em;
-    margin-bottom: 2em;
-
-    input {
-      outline: none;
-      border: none;
-      width: 66%;
-      // height: 100% !important;
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-
-    button {
-      all: unset;
-      background: #db0a5b;
-      width: 30%;
-      height: 100% !important;
-      text-align: center;
-    }
-  }
-
-  .polygon {
-    position: absolute;
-  }
-}
-
-.section2 {
-  margin-top: 3em;
-  // background: red;
-  padding-left: 10em;
-  padding-right: 10em;
-  .main_text {
-    color: #0c571b;
-    font-size: 3em;
-    text-align: center;
-    font-weight: 500;
-  }
-
-  .picturesList {
-    margin-top: 3em;
-  }
-
-  .row2 {
-    .containerElem {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-
-      .imageContainer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .imgDesc {
-        color: #da7f78;
-        font-size: 1.2em;
-        font-weight: 600;
-        margin-top: 2.3rem;
-        text-align: center;
-      }
-    }
-  }
-
-  .row1 {
-    .containerElem {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-
-      .imageContainer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .imgDesc {
-        color: #da7f78;
-        font-size: 1.2em;
-        font-weight: 600;
-        margin-top: 2.3rem;
-        text-align: center;
-      }
-    }
-  }
 }
 
 .loader {
@@ -723,6 +767,7 @@ const switchUser = (id) => {
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
+
 .loader::after {
   content: "";
   box-sizing: border-box;
@@ -741,97 +786,9 @@ const switchUser = (id) => {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
-  }
-}
-
-.theCrew {
-  .main_text {
-    color: #0c571b;
-    font-size: 3em;
-    text-align: center;
-    font-weight: 500;
-    margin-top: 4rem;
-    margin-bottom: 1rem;
-  }
-
-  .gridLayout {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    // background: yellow;
-
-    .rowWrapper {
-      // background: rgb(168, 34, 34);
-    }
-
-    .row1 {
-      display: flex;
-      flex-direction: row;
-    }
-    .row2 {
-      display: flex;
-      flex-direction: row;
-    }
-    .row3 {
-      display: flex;
-      flex-direction: row;
-    }
-  }
-}
-
-.aboutus {
-  padding-left: 10em;
-  padding-right: 10em;
-  margin-top: 4rem;
-
-  .title {
-    color: #0c571b;
-    font-size: 2.8em;
-    font-weight: 500;
-  }
-
-  p {
-    margin-top: 2rem;
-    font-weight: 400;
-  }
-}
-
-.infoSection {
-  padding-left: 10em;
-  padding-right: 10em;
-  display: flex;
-  flex-direction: row;
-  margin-top: 2rem;
-
-  .mission {
-    width: 50%;
-
-    .title {
-      color: #0c571b;
-      font-size: 2.8em;
-      font-weight: 500;
-    }
-
-    p {
-      width: 80%;
-      margin-top: 1rem;
-    }
-  }
-  .vision {
-    width: 50%;
-
-    .title {
-      color: #0c571b;
-      font-size: 2.8em;
-      font-weight: 500;
-    }
-
-    p {
-      width: 80%;
-      margin-top: 1rem;
-    }
   }
 }
 
@@ -843,52 +800,57 @@ const switchUser = (id) => {
   padding-bottom: 1rem;
   color: white;
   margin-top: 5rem;
-
-  .title {
-    color: white;
-    font-size: 2.8em;
-    font-weight: 500;
-    text-align: center;
-  }
 }
 
-.content {
-  input {
-    width: 100%;
-    padding: 5px;
-  }
+.question .title {
+  color: white;
+  font-size: 2.8em;
+  font-weight: 500;
+  text-align: center;
+}
 
-  textarea {
-    width: 100%;
-    padding: 5px;
-  }
+input {
+  width: 100%;
+  padding: 5px;
+}
 
-  .name,
-  .email {
-    margin-bottom: 1.5rem;
-  }
+textarea {
+  width: 100%;
+  padding: 5px;
+}
 
-  .submit {
-    display: flex;
-    justify-content: center;
+.name,
+.email {
+  margin-bottom: 1.5rem;
+}
 
-    .buttonContent {
-      background: #db0a5b;
-      padding: 0.5rem 4rem 0.5rem 4rem;
-      margin-top: 1rem;
-    }
-  }
+.submit {
+  display: flex;
+  justify-content: center;
+}
 
-  .followJourney {
-    text-align: center;
-    margin-top: 5rem;
-    font-size: 1.5em;
-  }
+.submit .buttonContent {
+  background: #db0a5b;
+  padding: 0.5rem 4rem 0.5rem 4rem;
+  margin-top: 1rem;
+}
 
-  .instIcon {
-    text-align: center;
-    font-size: 3em;
-    margin-top: 1rem;
-  }
+.followJourney {
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 1.5em;
+}
+
+.instIcon {
+  text-align: center;
+  font-size: 3em;
+  margin-top: 1rem;
+}
+
+.backgroundIMGVacancies {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),
+    url(../assets/backgroundIMGVacancies.png) no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 </style>
